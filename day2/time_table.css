@@ -1,0 +1,17 @@
+table{
+    height: 200px;  /* px: 스크린 해상도에서 사용하는 단위 */
+    width: 300px;
+    border-collapse: collapse;
+    text-align: center;
+}
+td{
+    height: 15%;
+    width: 15%;
+    border: 1px solid black;
+}
+th{
+    background-color: aqua;
+    height: 15%;
+    width: 15%;
+    border: 1px solid black;
+}
