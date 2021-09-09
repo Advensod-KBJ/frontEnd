@@ -7,8 +7,6 @@
         {
             "type": "pwa-chrome",
             "request": "launch",
-            "name": "Open member.html",
-            "file": "d:\\JCP0716\\frontEnd\\day3\\member.html"
         }
     ]
 }
