@@ -16,15 +16,15 @@
       </tr>
       <tr>
         <td>
-          문자열 추출
+          문자열 추출 substring
           <em id="start"></em>
-          ,
+          /
           <em id="end"></em>
         </td>
         <td id="subs"></td>
       </tr>
       <tr>
-        <td>문자열 추출 11~</td>
+        <td>문자열 추출 slice</td>
         <td id="slice"></td>
       </tr>
     </table>
@@ -40,10 +40,10 @@
       let end;
 
       function startNo() {
-        sinput = prompt("시작인덱스");
+        start = prompt("시작인덱스");
       }
       function endNo() {
-        einput = prompt("시작인덱스");
+        end = prompt("시작인덱스");
       }
       function strMethod() {
         let input = prompt("문자열을 입력하세요");
@@ -52,7 +52,7 @@
         document.getElementById("len").innerHTML = input.length;
         document.getElementById("last").innerHTML = input.lastIndexOf("am");
         document.getElementById("subs").innerHTML = input.substring(start, end);
-        document.getElementById("slice").innerHTML = input.substring(11);
+        document.getElementById("slice").innerHTML = input.slice(end);
       }
     </script>
   </body>
