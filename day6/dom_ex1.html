@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #init {
+            font-size: 1rem;
+            /* em, rem : 배율로 크기를 조정 차이점 : em은 부모태그 기준, rem은 root태그 기준(html, body는 글꼴 크기 16px )*/
+            color: black;
+        }
+
+        .small_blue1 {
+            font-size: 0.9rem;
+            color: blue;
+        }
+
+        .small_blue2 {
+            font-size: 0.9em;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>오늘의 과일</h3>
+    <ul>
+        <li id="apple">사과🍎</li>
+        <li id="banana">바나나🍌</li>
+        <li id="orange">오렌지🍊</li>
+    </ul>
+    <ul id="fruit">
+        <li><span id="f1">레몬🍋</span></li>
+        <li><span id="f2">레몬🍋</span></li>
+    </ul>
+    <button onclick="init()">스타일 초기화</button>
+    <button onclick="red()">글꼴 색상 변경 : RED</button>
+    <button onclick="larger()">글꼴 크기 변경 : 120%</button>
+    <button onclick="small_blue1()">rem 글꼴 small & blue 색상</button>
+    <button onclick="small_blue2()">em 글꼴 small & blue 색상</button>
+    <script>
+        const $banana = document.getElementById('banana');  // 요소 1개만 찾아옴
+        $banana.innerHTML = "Banana";
+
+        // 요소 여러개를 찾아오는 메소드
+        const $list = document.getElementsByTagName("li");// 요소 4개 -> HTML컬렉션 객체타입 생성
+        console.log($list);
+        // 배열로 변환이 필요 [...] 기호 스프레드 연산자
+        [...$list].forEach(function (item) {   // 배열 객체로 foreach : $list를 구성하는 배열요소가 li요소 객체
+            item.style.color = 'green';
+
+        });
+
+        console.log(document.querySelector("li>span"));
+        // li > span 이 2개 이상일 때 첫번쨰 한개만 가져옴 ( HTML Collection 결과 아님)\
+        // document.querySelectorAll : HTML Collection을 가져오는 메소드
+
+        function red() {
+            [...$list].forEach(function (fruit) {    // 컬렉션 객체를 배열로 변환 $list.array, 콜백함수 매개변수는 순서의 의미가 있고 변수명은 임의로 작성
+                fruit.style.color = 'red';
+            });
+        }
+
+        function larger() {
+            [...$list].forEach((fruit) => fruit.style.fontSize = '1.20em');
+            // arrow 함수 사용할 수 있음
+        }
+
+        function init() {
+            [...$list].forEach(function (fruit) {    // 컬렉션 객체를 배열로 변환 $list.array, 콜백함수 매개변수는 순서의 의미가 있고 변수명은 임의로 작성
+                fruit.style.color = 'black';
+                fruit.style.fontSize='1rem';
+            });
+        }
+
+        function small_blue1() {
+            const $lemon = document.querySelector('li>#f1');  // css 선택자로 요소를 가져옵니다.
+            $lemon.className = "small_blue1";
+        }
+        function small_blue2() {
+            const $lemon = document.querySelector('li>#f2');
+            $lemon.className = "small_blue2";
+        }
+
+        /*
+            DOM 메소드 : 1) document.getElementById, 2) getElementsByTagName, 3) document.getElementsByClassName
+            HTML Collection 타입으로 리턴하는 것은 2) 3)
+            4) document.querySelector 메소드 : 인자를 css선택자 - #banana, fruit, li>span
+        */
+
+    </script>
+</body>
+
+</html>
